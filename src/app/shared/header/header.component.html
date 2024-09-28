@@ -1,0 +1,16 @@
+<div class="max-width p-relative">
+    <header>
+        <nav>
+            <div class="language-btn">
+                <div (click)="toggleLanguage()" [ngClass]="{'language-on': languageOn, 'language-off': !languageOn}">
+                    <span>EN</span></div>
+                <div (click)="toggleLanguage()" [ngClass]="{'language-on': !languageOn, 'language-off': languageOn}">
+                    <span>DE</span></div>
+            </div>
+            <a routerLink="">About Me</a>
+            <a routerLink="">Skills</a>
+            <a routerLink="">Projects</a>
+        </nav>
+        <app-logo></app-logo>
+    </header>
+</div>

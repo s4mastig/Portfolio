@@ -1,0 +1,10 @@
+@import '../../../../../styles.scss';
+
+section {
+    width: 100%;
+    @include dflex($jc: space-between);
+    position: absolute;
+    bottom: 0;
+    left: 96px;
+    right: 96px;
+}
