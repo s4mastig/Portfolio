@@ -1,0 +1,111 @@
+@import '../../../../styles.scss';
+
+
+section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bottom-position {
+    @include dflex($jc: space-between, $ai: flex-end);
+    margin-left: 96px;
+    margin-right: 96px;
+}
+
+.aot-bottom-left {
+    @include dflex($g: 24px);
+    flex-direction: column;
+    position: relative;
+}
+
+.aot-bottom-right {
+    @include dflex($g: 24px);
+    flex-direction: column;
+
+    >a {
+        display: inline-block;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        text-decoration: none;
+        @include font-style();
+
+        &:hover {
+            color: $brand-green;
+        }
+    }
+}
+
+.vertical-line {
+    width: 1px;
+    height: 240px;
+    background-color: $brand-green;
+}
+
+.down-arrow {
+    @include dflex();
+    width: 30px;
+    height: 48px;
+    border: solid 1px;
+    border-color: $brand-green;
+    border-radius: 100px;
+}
+
+.svg-animation {
+    animation: moveArrow 1s ease-in-out infinite;
+}
+
+@keyframes moveArrow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.vertical-line2 {
+    width: 1px;
+    height: 186px;
+    background-color: white;
+}
+
+.aot-br-svgs {
+    @include dflex($g: 12px);
+    flex-direction: column;
+
+    >div {
+        position: relative;
+
+        >svg {
+            display: block; 
+            path {
+                transition: fill 0.125s ease-in-out;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            >svg {
+
+                path {
+                    fill: white;
+                }
+            }
+
+        }
+
+        &::before {
+            @include hover-dot($l: -16px, $t: 50%);
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+}

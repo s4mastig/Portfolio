@@ -3,8 +3,6 @@
 
 header {
     height: 50px;
-    margin-left: 96px;
-    margin-right: 96px;
     position: absolute;
     top: 48px;
     left: 96px;
@@ -31,28 +29,18 @@ header {
                 content: '';
                 position: absolute;
                 background: $brand-green;
-                /* Punktfarbe */
                 bottom: -10px;
-                /* Unterhalb des Links */
                 height: 8px;
-                /* Höhe des Punkts */
                 width: 8px;
-                /* Breite des Punkts */
                 left: 50%;
-                /* Zentriert unter dem Text */
                 transform: translateX(-50%);
-                /* Korrigiert die zentrierte Position */
                 border-radius: 50%;
-                /* Runde Form für den Punkt */
                 opacity: 0;
-                /* Anfangs unsichtbar */
                 transition: opacity 0.125s ease-in-out;
-                /* Sanfter Übergang beim Hover */
             }
 
             &:hover::before {
                 opacity: 1;
-                /* Der Punkt wird sichtbar */
             }
 
         }
@@ -82,10 +70,6 @@ header {
         width: 50%;
         border-radius: 100px;
     }
-}
-
-.p-relative {
-    position: relative;
 }
 
 .language-on {

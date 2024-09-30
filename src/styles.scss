@@ -8,11 +8,22 @@ $second-font: 'Fira Code';
 $logo-font: 'Livvic-Black';
 $brand-green: #3DCFB6;
 $brand-gray: #D9D9D9;
+$brand-black: #1C1C1C;
 
 .max-width {
-    max-width: 1440px;
+    max-width: 1920px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.max-width2 {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-relative {
+    position: relative;
 }
 
 @mixin dflex($jc: center, $ai: center, $g: 0) {
@@ -27,6 +38,23 @@ $brand-gray: #D9D9D9;
     font-size: $fs;
     font-weight: $fw;
     color: $fc;
+}
+
+@mixin hover-dot($t: auto, $l: auto, $r: auto, $b: auto) {
+    content: '';
+    position: absolute;
+    background: $brand-green;
+    top: $t;
+    bottom: $b;
+    left: $l; 
+    right: $r;
+    height: 8px;
+    width: 8px;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.125s ease-in-out;
 }
 
 /* fira-code-300 - latin */

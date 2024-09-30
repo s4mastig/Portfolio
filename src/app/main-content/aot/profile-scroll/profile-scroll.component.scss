@@ -1,0 +1,66 @@
+@import '../../../../styles.scss';
+
+$gap: 55px;
+
+.scroll-container {
+    overflow: hidden;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(5.3px);
+    transform-origin: left bottom;
+    transform: skewY(-3deg);
+    @include dflex($g: $gap);
+    user-select: none;
+    
+    >ul {
+        list-style: none;
+        padding: 0;
+        min-width: 100%;
+        @include dflex($jc: space-around, $g: $gap);
+        white-space: nowrap;
+        animation: scroll 6s linear infinite;
+        flex-shrink: 0;
+
+        >li {
+            @include font-style($fs: 32px, $fc: $brand-green);
+            @include dflex();
+            animation: opacity 6s linear infinite;
+        }
+    }
+}
+
+.green-dot {
+    width: 8px;
+    height: 8px;
+    background-color: $brand-green;
+    border-radius: 100%;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-100% - $gap));
+    }
+}
+
+@media (min-width: 1441px) {
+    .scroll-container {
+        background: linear-gradient(
+  to right, 
+  rgba(255, 255, 255, 0) 0%,
+  rgba(255, 255, 255, 0.00) 5%, 
+  rgba(255, 255, 255, 0.08) 20%, /* Start vollständig transparent */
+  rgba(255, 255, 255, 0.12) 30%, 
+  rgba(255, 255, 255, 0.12) 30%,    /* Starke Kurve bei 10% */
+  rgba(255, 255, 255, 0.08) 80%,
+  rgba(255, 255, 255, 0.00) 95%,     /* Mittlerer Teil bleibt konstant */
+  rgba(255, 255, 255, 0) 100%       /* Starke Kurve bei 90%, Ende transparent */
+);
+    }
+}
