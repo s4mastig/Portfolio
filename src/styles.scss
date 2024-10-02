@@ -57,6 +57,16 @@ $brand-black: #1C1C1C;
     transition: opacity 0.125s ease-in-out;
 }
 
+h3 {
+    @include font-style($ff: $second-font, $fs: 64px, $fw: 700, $fc: $brand-green);
+    line-height: 64px;
+}
+
+h4 {
+    @include font-style($ff: $main-font, $fs: 24px, $fc: $brand-green, $fw: 700);
+    line-height: 28px;
+}
+
 /* fira-code-300 - latin */
 @font-face {
     font-display: swap;

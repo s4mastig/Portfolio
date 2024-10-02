@@ -1,0 +1,113 @@
+@import '../../../styles.scss';
+
+section {
+    background-color: $brand-black;
+    height: 85vh;
+    @include dflex($ai: flex-start);
+    background: radial-gradient(22.43% 43.85% at 1.22% 52.45%, #08463B 0%, #1C1C1C 100%);
+
+}
+
+.test {
+    position:relative;
+}
+
+.test2 {
+    width: 1px;
+    height:144px;
+    position: absolute;
+    left: 160px;
+    bottom: 0;
+    background-color: red;
+}
+
+.content-height {
+    height: 100%;
+    width: 100%;
+    @include dflex($ai: flex-start);
+}
+
+.content {
+    margin: 0 96px 0 96px;
+    @include dflex();
+    height: 85%;
+    width: 100%;
+}
+
+.content-left {
+    width: 50%;
+    height: 100%;
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 20px);
+    flex-direction: column;
+}
+
+.content-right {
+    width: 50%;
+    height: 100%;
+    @include dflex($jc: flex-end, $ai: flex-end);
+    flex-direction: column;
+}
+
+.green-textbox {
+    width: 75%;
+    aspect-ratio: 1/1;
+    border: 1px solid;
+    border-color: $brand-green;
+    border-radius: 30px;
+    background-color: #3DCFB61A;
+    @include dflex();
+    flex-direction: column;
+}
+
+.text-container {
+    height: 85%;
+    width: 85%;
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 40px);
+    flex-direction: column;
+}
+
+.skill-set-paragraph {
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 32px);
+    flex-direction: column;
+
+    >p {
+        @include font-style();
+        line-height: 22px;
+        user-select: none;
+        text-align: justify;
+    }
+}
+
+.contact-invitation {
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 16px);
+    flex-direction: column;
+    width: 70%;
+
+    >p {
+        @include font-style($fs: 16px);
+        line-height: 19px;
+        user-select: none;
+    }
+}
+
+.h4-specifications {
+    @include font-style($ff: $second-font, $fc: $brand-green, $fw: 700);
+    // word-spacing: 8px;
+    line-height: 29px;
+}
+
+.white-color {
+    color: white;
+}
+// @media(min-width: 1600px) {
+//     .content {
+//         height: 1000px;
+//     }
+// }
+
+
+// @media(max-width: 1000px) {
+//     .content {
+//         height: 500px;
+//     }
+// }

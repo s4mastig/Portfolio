@@ -2,17 +2,39 @@
 
 section {
     background-color: $brand-black;
+    height: 130vh;
+    @include dflex();
+}
+
+.test {
+    background-color: red;
+    width: 1px;
+    height: 144px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+}
+
+.test2 {
+    position: relative;
+}
+
+.content-height {
+    height: 72%;
+    width: 100%;
+    @include dflex();
 }
 
 .content {
-    padding: 144px 0 144px 0;
     margin: 0 96px 0 64px;
-    @include dflex($jc: space-between);
+    @include dflex();
+    height: 90%;
+    width: 100%;
 }
 
 .content-left {
     width: 50%;
-    height: 708px;
+    height: 100%;
     @include dflex($jc: flex-start, $ai: flex-start);
     flex-direction: column;
     position: relative;
@@ -21,7 +43,7 @@ section {
         position: absolute;
         top: 0;
         left: 32px;
-        width: 80%;
+        width: 85%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 30px;
@@ -31,15 +53,94 @@ section {
 
 .content-right {
     width: 50%;
-    @include dflex($jc: flex-end);
+    height: 100%;
+    @include dflex($jc: flex-end, $ai: flex-end);
     flex-direction: column;
 }
 
 .background-stripes {
     margin-top: 32px;
-    width: 80%;
+    width: 85%;
     aspect-ratio: 1 / 1;
     border-radius: 30px;
-    background-image: linear-gradient(45deg, $brand-green 2%, rgba(0,0,0,0) 2%, rgba(0,0,0,0) 50%, $brand-green 50%, $brand-green 52%, rgba(0,0,0,0) 52%, rgba(0,0,0,0) 100%);
-background-size: 35.36px 35.36px;
+    background-image: linear-gradient(45deg, $brand-green 2.08%, rgba(0, 0, 0, 0) 2.08%, rgba(0, 0, 0, 0) 50%, $brand-green 50%, $brand-green 52.08%, rgba(0, 0, 0, 0) 52.08%, rgba(0, 0, 0, 0));
+    background-size: 33.94px 33.94px;
 }
+
+.green-textbox {
+    width: 85%;
+    aspect-ratio: 1/1;
+    border: 1px solid;
+    border-color: $brand-green;
+    border-radius: 30px;
+    background-color: #3DCFB61A;
+    @include dflex();
+    flex-direction: column;
+}
+
+.text-container {
+    height: 85%;
+    width: 85%;
+    @include dflex($jc: flex-start, $ai: flex-start);
+    flex-direction: column;
+}
+
+.h4-specifications {
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+.main-paragraph {
+    margin-top: 40px;
+
+    >p {
+        user-select: none;
+        @include font-style();
+        text-align: justify;
+        line-height: 22px;
+    }
+}
+
+.subparagraphs {
+    @include dflex($jc: flex-start, $g: 16px, $ai: flex-start);
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+.subparagraph {
+    @include dflex($jc: flex-start, $g: 24px, $ai: flex-start);
+    @include font-style($fc: $brand-gray);
+    line-height: 22px;
+    user-select: none;
+
+    >svg {
+        flex-shrink: 0;
+    }
+
+    >p {
+        transition: transform 0.125s ease-in-out;
+
+        &:hover {
+            color: white;
+            transform: translateY(-1px);
+        }
+    }
+
+}
+
+
+
+
+
+// @media(min-width: 1600px) {
+//     .content {
+//         height: 1000px;
+//     }
+// }
+
+
+// @media(max-width: 1000px) {
+//     .content {
+//         height: 500px;
+//     }
+// }

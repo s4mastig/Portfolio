@@ -1,0 +1,60 @@
+@import '../../../styles.scss';
+
+.hero-btn {
+    @include dflex();
+    border: 1px solid;
+    border-color: white;
+    border-radius: 100px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    transform: translateX(0);
+    transition: border-color 0.125s ease-in-out;
+
+    >span {
+        @include font-style();
+        white-space: nowrap;
+        position: relative;
+        transition: color 0.125s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: $brand-green;
+
+        >span {
+            display: inline-block;
+            animation: span-animation 3s linear infinite;
+            opacity: 1;
+            color: $brand-green;
+        }
+    }
+}
+
+@keyframes span-animation {
+    0% {
+        transform: translateX(0); /* Startet in der Mitte */
+    }
+    49% {
+        transform: translateX(-150%); 
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-151%); /* Springt nach rechts */
+        opacity: 0;
+    }
+    51% {
+        transform: translateX(150%); /* Springt nach rechts */
+        opacity: 0;
+    }
+    52% {
+        transform: translateX(151%); /* Springt nach rechts */
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1; /* Läuft wieder zur Mitte */
+    }
+}
