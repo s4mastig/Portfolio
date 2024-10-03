@@ -3,18 +3,19 @@
 section {
     background-color: $brand-black;
     height: 85vh;
-    @include dflex($ai: flex-start);
+    @include dflex($jc: flex-start);
     background: radial-gradient(22.43% 43.85% at 1.22% 52.45%, #08463B 0%, #1C1C1C 100%);
+    flex-direction: column;
 
 }
 
 .test {
-    position:relative;
+    position: relative;
 }
 
 .test2 {
     width: 1px;
-    height:144px;
+    height: 144px;
     position: absolute;
     left: 160px;
     bottom: 0;
@@ -23,13 +24,14 @@ section {
 
 .content-height {
     height: 100%;
-    width: 100%;
-    @include dflex($ai: flex-start);
+    // width: 100%;
+    @include dflex($ai: flex-start, $jc: flex-start, $g: 20px);
+    flex-direction: column;
+    margin: 0 96px 0 96px;
 }
 
 .content {
-    margin: 0 96px 0 96px;
-    @include dflex();
+    @include dflex($ai: flex-start);
     height: 85%;
     width: 100%;
 }
@@ -37,15 +39,30 @@ section {
 .content-left {
     width: 50%;
     height: 100%;
-    @include dflex($jc: flex-start, $ai: flex-start, $g: 20px);
-    flex-direction: column;
+    @include dflex($jc: flex-start, $ai: flex-start);
 }
 
 .content-right {
     width: 50%;
     height: 100%;
-    @include dflex($jc: flex-end, $ai: flex-end);
-    flex-direction: column;
+
+    >div {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+        justify-items: center;
+        align-items: flex-start;
+        gap: 12% 12%;
+
+        >:nth-child(10) {
+
+            &:hover {
+
+                >span {
+                    color: $brand-green;
+                }
+            }
+        }
+    }
 }
 
 .green-textbox {
@@ -99,6 +116,34 @@ section {
 .white-color {
     color: white;
 }
+
+.skill-logos {
+    @include dflex($jc: flex-start, $g: 8px);
+    flex-direction: column;
+    height: 112px;
+
+    >span {
+        @include font-style($ff: $second-font);
+        line-height: 22px;
+        letter-spacing: -3%;
+        text-align: center;
+        user-select: none;
+        transition: transform 0.125s ease-in-out;
+    }
+
+    >svg {
+        width: 60px;
+        height: 60px;
+    }
+
+    &:hover {
+        
+        >svg {
+            transform: scale(1.1);
+        }
+    }
+}
+
 // @media(min-width: 1600px) {
 //     .content {
 //         height: 1000px;
