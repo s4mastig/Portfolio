@@ -9,6 +9,7 @@ $logo-font: 'Livvic-Black';
 $brand-green: #3DCFB6;
 $brand-gray: #D9D9D9;
 $brand-black: #1C1C1C;
+$standard-transition: transform 0.125s ease-in-out;
 
 .max-width {
     max-width: 1920px;
@@ -46,7 +47,7 @@ $brand-black: #1C1C1C;
     background: $brand-green;
     top: $t;
     bottom: $b;
-    left: $l; 
+    left: $l;
     right: $r;
     height: 8px;
     width: 8px;
@@ -56,6 +57,38 @@ $brand-black: #1C1C1C;
     opacity: 0;
     transition: opacity 0.125s ease-in-out;
 }
+
+@mixin project-image-area() {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    transition: $standard-transition;
+    transform: scale(0);
+}
+
+@mixin project-image($b-img: auto, $t-img: auto) {
+    width: 75%;
+    aspect-ratio: 1.55/1;
+    object-fit: cover;
+    position: absolute;
+    bottom: $b-img;
+    top: $t-img;
+    right: 24px;
+    border-radius: 16px;
+}
+
+@mixin back-ground-stripes2($b-stripes: auto, $t-stripes: auto) {
+    width: 75%;
+    aspect-ratio: 1.55/1;
+    position: absolute;
+    right: 0;
+    bottom: $b-stripes;
+    top: $t-stripes;
+    background-image: linear-gradient(135deg, $brand-green 5.56%, rgba(0, 0, 0, 0) 5.56%, rgba(0, 0, 0, 0) 50%, $brand-green 50%, $brand-green 55.56%, rgba(0, 0, 0, 0) 55.56%, rgba(0, 0, 0, 0) 100%);
+    background-size: 12.73px 12.73px;
+    border-radius: 16px;
+}
+
 
 h3 {
     @include font-style($ff: $second-font, $fs: 64px, $fw: 700, $fc: $brand-green);
@@ -207,3 +240,17 @@ h4 {
     font-weight: 700;
     src: url('./assets/fonts/livvic-black.ttf') format('truetype');
 }
+
+
+// .test {
+//     position: relative;
+// }
+
+// .test2 {
+//     width: 1px;
+//     height: 144px;
+//     position: absolute;
+//     left: 160px;
+//     bottom: 0;
+//     background-color: red;
+// }

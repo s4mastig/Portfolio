@@ -9,22 +9,8 @@ section {
 
 }
 
-.test {
-    position: relative;
-}
-
-.test2 {
-    width: 1px;
-    height: 144px;
-    position: absolute;
-    left: 160px;
-    bottom: 0;
-    background-color: red;
-}
-
-.content-height {
+.content-container {
     height: 100%;
-    // width: 100%;
     @include dflex($ai: flex-start, $jc: flex-start, $g: 20px);
     flex-direction: column;
     margin: 0 96px 0 96px;

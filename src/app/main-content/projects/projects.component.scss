@@ -1,5 +1,188 @@
 @import '../../../styles.scss';
 
 section {
-    height: 71vh;
+    height: 78vh;
+    background-color: $brand-black;
+}
+
+.content-container {
+    height: 94%;
+    margin: 0 72px 0 96px;
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 41px);
+    flex-direction: column;
+
+    >p {
+        @include font-style();
+        line-height: 22px;
+        user-select: none;
+        width: 35%;
+    }
+}
+
+.headline-container {
+    @include dflex($g: 20px, $ai: flex-start);
+    flex-direction: column;
+}
+
+.projects {
+    width: 100%;
+    height: 100%;
+    @include dflex($jc: flex-start, $ai: flex-start);
+    flex-direction: column;
+}
+
+.project {
+    width: 100%;
+    height: 60%;
+    @include dflex($jc: space-between);
+    transition: transform 0.125s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+
+        >.project-img1 {
+            transform: scale(1);
+        }
+
+        >.project-img2 {
+            transform: scale(1);
+        }
+
+        >.project-img3 {
+            transform: scale(1);
+        }
+    }
+}
+
+.project-btn {
+    width: 65%;
+    height: 100%;
+    // height: 9%;
+    @include dflex($jc: space-between);
+    transition: $standard-transition;
+
+    >span {
+        @include font-style($fs: 24px, $ff: $second-font, $fw: 700);
+        line-height: 29px;
+        margin-left: 4%;
+    }
+
+    >div {
+        margin-right: 4%;
+        @include dflex($g: 4px);
+    }
+
+    &:hover {
+        background-color: #3DCFB64D;
+    }
+}
+
+.technology {
+    @include font-style();
+    line-height: 22px;
+}
+
+.technologies-separator {
+    @include font-style($fc: $brand-green);
+    line-height: 22px;
+}
+
+
+.btn-separator {
+    height: 1px;
+    width: 65%;
+    background-color: $brand-green;
+    transform: scaleY(1);
+}
+
+
+.project-img1 {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    transition: $standard-transition;
+    transform: scale(0);
+
+    >img {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        object-fit: cover;
+        position: absolute;
+        top: -10px;
+        right: 24px;
+        border-radius: 16px;
+        z-index: 2;
+    }
+
+    >.background-stripes {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        position: absolute;
+        right: 0;
+        top: 14px;
+        background-image: linear-gradient(135deg, $brand-green 5.56%, rgba(0, 0, 0, 0) 5.56%, rgba(0, 0, 0, 0) 50%, $brand-green 50%, $brand-green 55.56%, rgba(0, 0, 0, 0) 55.56%, rgba(0, 0, 0, 0) 100%);
+        background-size: 12.73px 12.73px;
+        border-radius: 16px;
+        z-index: 2;
+    }
+}
+
+.project-img2 {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    transition: $standard-transition;
+    transform: scale(0);
+
+    >img {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        object-fit: cover;
+        position: absolute;
+        top: -50%;
+        right: 24px;
+        border-radius: 16px;
+        z-index: 2;
+    }
+
+    >.background-stripes {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        position: absolute;
+        right: 0;
+        top: -50%;
+        margin-top: 24px;
+        background-image: linear-gradient(135deg, $brand-green 5.56%, rgba(0, 0, 0, 0) 5.56%, rgba(0, 0, 0, 0) 50%, $brand-green 50%, $brand-green 55.56%, rgba(0, 0, 0, 0) 55.56%, rgba(0, 0, 0, 0) 100%);
+        background-size: 12.73px 12.73px;
+        border-radius: 16px;
+    }
+}
+
+.project-img3 {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    transition: $standard-transition;
+    transform: scale(0);
+
+    >img {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        object-fit: cover;
+        position: absolute;
+        bottom: -10px;
+        right: 24px;
+        border-radius: 16px;
+    }
+
+    >.background-stripes {
+        width: 75%;
+        aspect-ratio: 1.55/1;
+        position: absolute;
+        right: 0;
+        bottom: -34px;
+        background-image: linear-gradient(135deg, $brand-green 5.56%, rgba(0, 0, 0, 0) 5.56%, rgba(0, 0, 0, 0) 50%, $brand-green 50%, $brand-green 55.56%, rgba(0, 0, 0, 0) 55.56%, rgba(0, 0, 0, 0) 100%);
+        background-size: 12.73px 12.73px;
+        border-radius: 16px;
+    }
 }
