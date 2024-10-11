@@ -75,6 +75,7 @@ header {
 .language-on {
     >span {
         @include font-style($ff: $main-font, $fs: 16px);
+        user-select: none;
     }
 
     background-color: $brand-green;
@@ -84,6 +85,7 @@ header {
 .language-off {
     @include font-style($ff: $main-font, $fs: 16px, $fc: #3DCFB680);
     transition: color 0.125s ease-in-out;
+    user-select: none;
 }
 
 

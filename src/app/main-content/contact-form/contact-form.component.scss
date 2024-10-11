@@ -1,0 +1,55 @@
+@import '../../../styles.scss';
+
+section {
+    background-color: $brand-black;
+    padding-bottom: 144px;
+}
+
+.content-container {
+    margin-left: 96px;
+    margin-right: 96px;
+    @include dflex();
+}
+
+.left-side {
+    width: 50%;
+    @include dflex($ai: flex-start, $g: 40px);
+    flex-direction: column;
+}
+
+.headline-container {
+    @include dflex($ai: flex-start, $g: 20px);
+    flex-direction: column;
+}
+
+.contact-invitation-container {
+    @include dflex($ai: flex-start, $g: 16px);
+    flex-direction: column;
+
+    >span {
+        @include font-style($ff: $second-font, $fs: 24px, $fw: 700, $fc: $brand-green);
+        line-height: 29px;
+        user-select: none;
+    }
+
+    >p {
+        @include font-style($ff: $main-font, $fs: 16px, $fw: 300);
+        line-height: 19px;
+        user-select: none;
+    }
+}
+
+.invitation {
+    @include font-style($ff: $main-font, $fs: 16px, $fw: 300);
+        line-height: 19px;
+        user-select: none;
+        margin-top: 16px;
+
+    >:nth-child(2) {
+        color: $brand-green;
+    }
+}
+
+.right-side {
+    width: 50%;
+}

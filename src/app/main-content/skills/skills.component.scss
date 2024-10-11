@@ -2,34 +2,32 @@
 
 section {
     background-color: $brand-black;
-    height: 85vh;
     @include dflex($jc: flex-start);
     background: radial-gradient(22.43% 43.85% at 1.22% 52.45%, #08463B 0%, #1C1C1C 100%);
     flex-direction: column;
-
+    padding-bottom: 144px;
 }
 
 .content-container {
-    height: 100%;
     @include dflex($ai: flex-start, $jc: flex-start, $g: 20px);
     flex-direction: column;
-    margin: 0 96px 0 96px;
 }
 
 .content {
     @include dflex($ai: flex-start);
     height: 85%;
-    width: 100%;
 }
 
 .content-left {
     width: 50%;
+    margin-left: 96px;
     height: 100%;
     @include dflex($jc: flex-start, $ai: flex-start);
 }
 
 .content-right {
     width: 50%;
+    margin-right: 96px;
     height: 100%;
 
     >div {
@@ -86,6 +84,10 @@ section {
     flex-direction: column;
     width: 70%;
 
+    >h4 {
+        margin: 0;
+    }
+
     >p {
         @include font-style($fs: 16px);
         line-height: 19px;
@@ -95,7 +97,7 @@ section {
 
 .h4-specifications {
     @include font-style($ff: $second-font, $fc: $brand-green, $fw: 700);
-    // word-spacing: 8px;
+    margin-left: 96px;
     line-height: 29px;
 }
 

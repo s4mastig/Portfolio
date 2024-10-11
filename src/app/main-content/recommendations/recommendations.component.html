@@ -1,0 +1,99 @@
+<section>
+    <div class="content-container max-width">
+        <h3>What my collegues say about me</h3>
+        <div [ngClass]="'recommendations-slider'">
+            @for(recommendation of recommendations; track $index) {
+            @if($index === 4) {
+            <div class="green-textbox" [ngClass]="{
+                        'middle': slidingDirection === null,
+                        'middle-slide-left': slidingDirection === 'left', 
+                        'middle-slide-right': slidingDirection === 'right'
+                    }">
+                <div class="text-container">
+                    <p class="citation">{{recommendation.recommendation}}</p>
+                    <div class="source-wrapper">
+                        <div class="source" [ngClass]="{
+                        'text-stays-active': slidingDirection === null,
+                        'text-becomes-inactive': slidingDirection === 'left' || slidingDirection === 'right'
+                    }">
+                            <div class="horizontal-line"></div>
+                            <span>{{recommendation.teamPartner}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            } @else if(($index === 3 || $index === 6)) {
+            <div class="green-textbox" [ngClass]="{
+                        'side': slidingDirection === null,
+                        'left-slide-left': slidingDirection === 'left',  
+                        'left-slide-right': slidingDirection === 'right'
+                      }">
+                <div class="text-container">
+                    <p class="citation">{{recommendation.recommendation}}</p>
+                    <div class="source-wrapper">
+                        <div class="source" [ngClass]="{
+                        'text-becomes-active': slidingDirection === 'right',
+                        'text-stays-inactive': slidingDirection === 'left' || slidingDirection === null,
+                    }">
+                            <div class="horizontal-line"></div>
+                            <span>{{recommendation.teamPartner}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            } @else if(($index === 2 || $index === 5)){
+            <div class="green-textbox" [ngClass]="{
+                        'side': slidingDirection === null,
+                        'right-slide-right': slidingDirection === 'right',
+                        'right-slide-left': slidingDirection === 'left'
+                      }">
+                <div class="text-container">
+                    <p class="citation">{{recommendation.recommendation}}</p>
+                    <div class="source-wrapper">
+                        <div class="source" [ngClass]="{
+                            'text-becomes-active': slidingDirection === 'left',
+                            'text-stays-inactive': slidingDirection === 'right' || slidingDirection === null
+                            }">
+                            <div class="horizontal-line"></div>
+                            <span>{{recommendation.teamPartner}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            }
+        </div>
+        <div class="slide-btns">
+            <svg [ngClass]="{ 'disabled': isDisabled }" (click)="slide('left')" width="32" height="32"
+                viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_14998_327" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32"
+                    height="32">
+                    <rect width="32" height="32" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_14998_327)">
+                    <path
+                        d="M9.22831 16.6665L16.4793 23.9179C16.6093 24.0477 16.6773 24.2007 16.6833 24.3769C16.6893 24.5529 16.6188 24.7144 16.4716 24.8615C16.3248 25.0033 16.1675 25.0755 16 25.0782C15.8324 25.0807 15.6752 25.0084 15.5283 24.8615L7.42065 16.7539C7.3042 16.6374 7.22254 16.5185 7.17565 16.3972C7.12854 16.2759 7.10498 16.1434 7.10498 15.9999C7.10498 15.8563 7.12854 15.7239 7.17565 15.6025C7.22254 15.4812 7.3042 15.3623 7.42065 15.2459L15.5283 7.13821C15.653 7.01355 15.8046 6.94688 15.9833 6.93821C16.162 6.92977 16.3248 6.99643 16.4716 7.13821C16.6188 7.28532 16.6923 7.44388 16.6923 7.61388C16.6923 7.7841 16.6188 7.94266 16.4716 8.08954L9.22831 15.3332H24.6666C24.8564 15.3332 25.015 15.3969 25.1423 15.5242C25.2696 15.6515 25.3333 15.8101 25.3333 15.9999C25.3333 16.1897 25.2696 16.3482 25.1423 16.4755C25.015 16.6029 24.8564 16.6665 24.6666 16.6665H9.22831Z"
+                        fill="white" />
+                </g>
+            </svg>
+            <div class="dots">
+                @for(position of positionOfDots; track $index) {
+                <div class="dot" [ngClass]="{'dot-active': position == sliderCounter}"></div>
+                }
+            </div>
+            <svg [ngClass]="{ 'disabled': isDisabled }" (click)="slide('right')" width="32" height="32"
+                viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_14998_363" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32"
+                    height="32">
+                    <rect width="32" height="32" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_14998_363)">
+                    <path
+                        d="M22.7715 16.6667H7.33317C7.14339 16.6667 6.98484 16.603 6.8575 16.4757C6.73017 16.3484 6.6665 16.1898 6.6665 16C6.6665 15.8102 6.73017 15.6517 6.8575 15.5244C6.98484 15.397 7.14339 15.3334 7.33317 15.3334H22.7715L15.5205 8.08202C15.3905 7.95225 15.3225 7.79925 15.3165 7.62302C15.3105 7.44702 15.3811 7.28547 15.5282 7.13836C15.6751 6.99658 15.8323 6.92436 15.9998 6.92169C16.1674 6.91925 16.3246 6.99147 16.4715 7.13836L24.5792 15.246C24.6956 15.3625 24.7773 15.4814 24.8242 15.6027C24.8713 15.724 24.8948 15.8565 24.8948 16C24.8948 16.1436 24.8713 16.276 24.8242 16.3974C24.7773 16.5187 24.6956 16.6376 24.5792 16.754L16.4715 24.8617C16.3468 24.9864 16.1952 25.053 16.0165 25.0617C15.8378 25.0701 15.6751 25.0035 15.5282 24.8617C15.3811 24.7146 15.3075 24.556 15.3075 24.386C15.3075 24.2158 15.3811 24.0572 15.5282 23.9104L22.7715 16.6667Z"
+                        fill="white" />
+                </g>
+            </svg>
+
+        </div>
+    </div>
+</section>
