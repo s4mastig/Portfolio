@@ -1,0 +1,51 @@
+<form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+    <div class="form-structure">
+        <div class="form-separator"></div>
+        
+        <!-- Name Input Field -->
+        <div class="input-area">
+            <label for="name">What's your name?</label>
+            <input #name="ngModel" [(ngModel)]="contactData.name" type="text" id="name" name="name"
+                [ngClass]="{
+                    'error': nameError || (name.touched && (name.invalid || hasInvalidCharacters(name.value) || !hasTwoWords(contactData.name)))
+                }"
+                (blur)="checkNameFieldStatus(name)"
+                [placeholder]="namePlaceholder"
+                required>
+        </div>
+        
+        <div class="form-separator"></div>
+
+        <!-- Email Input Field -->
+        <div class="input-area">
+            <label for="email">What's your email?</label>
+            <input #email="ngModel" [(ngModel)]="contactData.email" type="email" name="email" id="email"
+                [ngClass]="{
+                    'error': emailError || email.touched && (email.invalid || email.errors?.['pattern']),
+                }"
+                (blur)="checkEmailFieldStatus(email)"
+                [placeholder]="emailPlaceholder" 
+                required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+        </div>
+        
+        <div class="form-separator"></div>
+
+        <!-- Message Textarea -->
+        <div class="input-area">
+            <label for="message">How can I help you?</label>
+            <textarea #message="ngModel" rows="1" [(ngModel)]="contactData.message" name="message" id="message"
+                [ngClass]="{
+                    'error': messageError ||  message.touched && !message.valid,
+                }"
+                (blur)="checkMessageFieldStatus(message)"
+                [placeholder]="messagePlaceholder" 
+                required></textarea>
+        </div>
+        
+        <div class="form-separator"></div>
+
+        <input type="text" name="hiddenField" style="display:none" [(ngModel)]="contactData.hiddenField">
+
+        <input type="submit" value="Submit">
+    </div>
+</form>

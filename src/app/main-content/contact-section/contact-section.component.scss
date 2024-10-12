@@ -25,6 +25,7 @@ section {
 .contact-invitation-container {
     @include dflex($ai: flex-start, $g: 16px);
     flex-direction: column;
+    width: 85%;
 
     >span {
         @include font-style($ff: $second-font, $fs: 24px, $fw: 700, $fc: $brand-green);

@@ -1,0 +1,66 @@
+@import '../../../../styles.scss';
+
+input[type=text],[type=email] {
+    width: 90%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    @include font-style();
+    line-height: 22px;
+}
+
+textarea {
+    width: 90%;
+    @include font-style();
+    line-height: 22px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    resize: none;
+}
+
+input::placeholder {
+    color: white; /* Farbe für nicht-validierte Eingaben */
+}
+
+textarea::placeholder {
+    color: white; /* Farbe für nicht-validierte Eingaben */
+}
+/* Farbe des Platzhalters für das 'error' Eingabefeld */
+input.error::placeholder {
+    color: #EC7B7B;
+    /* Farbe für ungültige Eingaben */
+}
+textarea.error::placeholder {
+    color: #EC7B7B;/* Farbe für ungültige Eingaben */
+}
+
+input[type=submit] {
+
+}
+
+.form-structure {
+    @include dflex();
+    flex-direction: column;
+}
+
+.input-area {
+    height: 109px;
+    width: 100%;
+    @include dflex($g: 16px);
+    flex-direction: column;
+}
+
+label {
+    @include font-style($fs: 24px, $fc: $brand-green, $ff: $second-font, $fw: 500);
+    line-height: 29px;
+    user-select: none;
+    width: 90%;
+
+}
+
+.form-separator {
+    height: 1px;
+    width: 100%;
+    background-color: $brand-green;
+}
