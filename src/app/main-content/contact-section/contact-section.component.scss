@@ -8,13 +8,14 @@ section {
 .content-container {
     margin-left: 96px;
     margin-right: 96px;
-    @include dflex();
+    @include dflex($ai: flex-start);
 }
 
 .left-side {
     width: 50%;
     @include dflex($ai: flex-start, $g: 40px);
     flex-direction: column;
+    height: 100%;
 }
 
 .headline-container {

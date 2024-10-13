@@ -12,6 +12,7 @@
     overflow: hidden;
     transform: translateX(0);
     transition: border-color 0.125s ease-in-out;
+    background-color: transparent;
 
     >span {
         @include font-style();

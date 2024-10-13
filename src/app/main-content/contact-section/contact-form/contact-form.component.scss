@@ -1,6 +1,7 @@
 @import '../../../../styles.scss';
 
-input[type=text],[type=email] {
+input[type=text],
+[type=email] {
     width: 90%;
     border: none;
     outline: none;
@@ -20,24 +21,27 @@ textarea {
 }
 
 input::placeholder {
-    color: white; /* Farbe für nicht-validierte Eingaben */
+    color: white;
+    /* Farbe für nicht-validierte Eingaben */
 }
 
 textarea::placeholder {
-    color: white; /* Farbe für nicht-validierte Eingaben */
+    color: white;
+    /* Farbe für nicht-validierte Eingaben */
 }
+
 /* Farbe des Platzhalters für das 'error' Eingabefeld */
 input.error::placeholder {
     color: #EC7B7B;
     /* Farbe für ungültige Eingaben */
 }
+
 textarea.error::placeholder {
-    color: #EC7B7B;/* Farbe für ungültige Eingaben */
+    color: #EC7B7B;
+    /* Farbe für ungültige Eingaben */
 }
 
-input[type=submit] {
-
-}
+input[type=submit] {}
 
 .form-structure {
     @include dflex();
@@ -63,4 +67,75 @@ label {
     height: 1px;
     width: 100%;
     background-color: $brand-green;
+}
+
+.custom-checkbox {
+margin-top: 40px;
+width: 100%;
+
+    >input[type=checkbox] {
+        display: none;
+    }
+}
+
+.custom-checkbox-label {
+    @include dflex($jc: flex-start, $ai: flex-start, $g: 8px);
+    width: 100%;
+
+    >svg {
+        transition: $standard-transition;
+
+        &:hover {
+            background-color: #3DCFB64D;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+
+    }
+
+    >div {
+        @include dflex($ai: flex-start);
+
+        >div {
+            display: inline-block;
+            line-height: 18px;
+
+            >span {
+                @include font-style($fs: 15px);
+                user-select: none;
+            }
+
+            >a {
+                @include font-style($fs: 15px, $fc: $brand-green);
+                transition: $standard-transition;
+                text-decoration: none;
+                display: inline-block;
+
+                &:hover {
+                    color: white;
+                    transform: scale(1.01);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.checkbox-reminder {
+    height: 40px;
+    position: relative;
+
+    >span {
+        position: absolute;
+        top: 8px;
+        @include font-style($fs: 14px, $fc: none);
+    }
+}
+
+.checkbox-error {
+    color: #EC7B7BCC;
+}
+
+.no-checkbox-error {
+    color: $brand-black;
 }

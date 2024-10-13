@@ -17,7 +17,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $email = $params->email;
             $name = $params->name;
             $message = $params->message;
-            $hiddenField = $params->$hiddenField;
+            // $hiddenField = $params->$hiddenField;
 
             if (!empty($hiddenField)) {
                 echo "Spam detected";  

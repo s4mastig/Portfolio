@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ButtonComponent],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss'
 })
@@ -18,7 +19,7 @@ export class ContactFormComponent {
     name: '',
     email: '',
     message: '',
-    hiddenField: ''
+    // hiddenField: ''
   }
 
   namePlaceholder = 'Your name goes here';
@@ -28,6 +29,9 @@ export class ContactFormComponent {
   nameError = false;
   emailError = false;
   messageError = false;
+  checkboxError = false;
+
+  isChecked = false;
 
   mailTest = true;
 
@@ -64,6 +68,8 @@ export class ContactFormComponent {
   }
 
   onSubmit(ngForm: NgForm) {
+
+    this.checkboxError = false;
 
     // Formularvalidierung
     if (ngForm.invalid) {
@@ -110,6 +116,12 @@ export class ContactFormComponent {
       return; // Stoppe hier die Ausführung, da das Formular ungültig ist
     }
 
+    if (!this.isChecked) {
+      this.checkboxError = true;
+      console.log(this.checkboxError); // Fehler setzen, wenn die Checkbox nicht ausgewählt ist
+      return; // Stoppe hier die Ausführung, da die Checkbox nicht ausgewählt ist
+    }
+
     // Wenn das Formular gültig ist, wird die HTTP-Anfrage gesendet
     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
       this.http.post(this.post.endPoint, this.post.body(this.contactData))
@@ -137,5 +149,16 @@ export class ContactFormComponent {
     // Überprüft, ob der Name ungültige Zeichen enthält
     return /[^a-zA-Z\s-]/.test(name);
   }
+
+  toggleCheckbox() {
+    this.isChecked = !this.isChecked;
+    console.log(this.isChecked);
+}
+
+onCheckboxChange() {
+  // Hier kannst du zusätzliche Logik hinzufügen, wenn nötig
+  this.checkboxError = false;
+  console.log(this.checkboxError); // Setze den Fehler zurück, wenn der Benutzer das Häkchen setzt
+}
 
 }
