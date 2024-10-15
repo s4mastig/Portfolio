@@ -32,6 +32,7 @@ export class ContactFormComponent {
   checkboxError = false;
 
   isChecked = false;
+  formSubmitted = false;
 
   mailTest = true;
 
@@ -118,7 +119,7 @@ export class ContactFormComponent {
 
     if (!this.isChecked) {
       this.checkboxError = true;
-      console.log(this.checkboxError); // Fehler setzen, wenn die Checkbox nicht ausgewählt ist
+      console.log('checkbox-error is', this.checkboxError); // Fehler setzen, wenn die Checkbox nicht ausgewählt ist
       return; // Stoppe hier die Ausführung, da die Checkbox nicht ausgewählt ist
     }
 
@@ -127,8 +128,17 @@ export class ContactFormComponent {
       this.http.post(this.post.endPoint, this.post.body(this.contactData))
         .subscribe({
           next: (response) => {
-            // Hier kannst du zusätzliche Logik hinzufügen, wenn das Post erfolgreich war
+            this.formSubmitted = true;
+            setTimeout(() => {
+              this.formSubmitted = false;
+            }, 2000);
             ngForm.resetForm(); // Leert die Form
+            this.nameError = false;
+this.emailError = false;
+this.messageError = false;
+this.checkboxError = false;
+this.isChecked = false;
+this.contactData = { name: '', email: '', message: '' };
           },
           error: (error) => {
             console.error(error);
@@ -136,8 +146,19 @@ export class ContactFormComponent {
           complete: () => console.info('send post complete'),
         });
     } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-      // Wenn das Mail-Test-Flag aktiv ist
+      
+      this.formSubmitted = true;
+            setTimeout(() => {
+              this.formSubmitted = false;
+            }, 6000);
+      
       ngForm.resetForm(); // Leert die Form
+      this.nameError = false;
+this.emailError = false;
+this.messageError = false;
+this.checkboxError = false;
+this.isChecked = false;
+this.contactData = { name: '', email: '', message: '' };
     }
   }
 
@@ -150,15 +171,10 @@ export class ContactFormComponent {
     return /[^a-zA-Z\s-]/.test(name);
   }
 
-  toggleCheckbox() {
-    this.isChecked = !this.isChecked;
-    console.log(this.isChecked);
-}
-
 onCheckboxChange() {
   // Hier kannst du zusätzliche Logik hinzufügen, wenn nötig
   this.checkboxError = false;
-  console.log(this.checkboxError); // Setze den Fehler zurück, wenn der Benutzer das Häkchen setzt
+  console.log('checkboxerror is ',this.checkboxError); // Setze den Fehler zurück, wenn der Benutzer das Häkchen setzt
 }
 
 }

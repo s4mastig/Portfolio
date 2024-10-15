@@ -1,45 +1,47 @@
 <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
     <div class="form-structure">
-            <div class="form-separator"></div>
+        <div class="form-separator"></div>
 
-            <!-- Name Input Field -->
-            <div class="input-area">
-                <label for="name">What's your name?</label>
-                <input #name="ngModel" [(ngModel)]="contactData.name" type="text" id="name" name="name" [ngClass]="{
+        <!-- Name Input Field -->
+        <div class="input-area">
+            <label for="name">What's your name?</label>
+            <input #name="ngModel" [(ngModel)]="contactData.name" type="text" id="name" name="name" [ngClass]="{
                     'error': nameError || (name.touched && (name.invalid || hasInvalidCharacters(name.value) || !hasTwoWords(contactData.name)))
                 }" (blur)="checkNameFieldStatus(name)" [placeholder]="namePlaceholder" autocomplete="off" required>
-            </div>
+        </div>
 
-            <div class="form-separator"></div>
+        <div class="form-separator"></div>
 
-            <!-- Email Input Field -->
-            <div class="input-area">
-                <label for="email">What's your email?</label>
-                <input #email="ngModel" [(ngModel)]="contactData.email" type="email" name="email" id="email" [ngClass]="{
+        <!-- Email Input Field -->
+        <div class="input-area">
+            <label for="email">What's your email?</label>
+            <input #email="ngModel" [(ngModel)]="contactData.email" type="email" name="email" id="email" [ngClass]="{
                     'error': emailError || email.touched && (email.invalid || email.errors?.['pattern']),
                 }" (blur)="checkEmailFieldStatus(email)" [placeholder]="emailPlaceholder" autocomplete="off" required
-                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-            </div>
+                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+        </div>
 
-            <div class="form-separator"></div>
+        <div class="form-separator"></div>
 
-            <!-- Message Textarea -->
-            <div class="input-area">
-                <label for="message">How can I help you?</label>
-                <textarea #message="ngModel" rows="1" [(ngModel)]="contactData.message" name="message" id="message"
-                    [ngClass]="{
+        <!-- Message Textarea -->
+        <div class="input-area">
+            <label for="message">How can I help you?</label>
+            <textarea #message="ngModel" rows="1" [(ngModel)]="contactData.message" name="message" id="message"
+                [ngClass]="{
                     'error': messageError ||  message.touched && !message.valid,
-                }" (blur)="checkMessageFieldStatus(message)" [placeholder]="messagePlaceholder" autocomplete="off" required></textarea>
-            </div>
+                }" (blur)="checkMessageFieldStatus(message)" [placeholder]="messagePlaceholder" autocomplete="off"
+                required></textarea>
+        </div>
 
-            <div class="form-separator"></div>
+        <div class="form-separator"></div>
 
         <!-- <input type="text" name="hiddenField" style="display:none" [(ngModel)]="contactData.hiddenField"> -->
         <div class="custom-checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox" [(ngModel)]="isChecked" class="real-checkbox" (change)="onCheckboxChange()">
+            <input type="checkbox" name="checkbox" id="checkbox" [(ngModel)]="isChecked" class="real-checkbox"
+                (change)="onCheckboxChange()">
             <label class="custom-checkbox-label" for="checkbox">
                 @if(isChecked) {
-                <svg (click)="toggleCheckbox()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_3296_3312" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
                         <rect width="24" height="24" fill="#797EF3" />
@@ -51,7 +53,7 @@
                     </g>
                 </svg>
                 } @else {
-                <svg (click)="toggleCheckbox()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_3296_3306" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
                         height="24">
                         <rect width="24" height="24" fill="#797EF3" />
@@ -65,17 +67,26 @@
                 }
                 <div>
                     <div>
-                    <span>I've read </span>
-                    <a routerlink="">privacy policy</a>
-                    <span> and agree to the processing of my data as outlined.</span>
-                </div>
+                        <span>I've read </span>
+                        <a routerlink="">privacy policy</a>
+                        <span> and agree to the processing of my data as outlined.</span>
+                    </div>
                 </div>
 
             </label>
             <div class="checkbox-reminder">
-                <span [ngClass]="{ 'checkbox-error': checkboxError, 'no-checkbox-error': !checkboxError }">Please accept the privacy policy.</span>
+                <span [ngClass]="{ 'checkbox-error': checkboxError, 'no-checkbox-error': !checkboxError }">Please accept
+                    the privacy policy.</span>
             </div>
         </div>
-        <app-button type="submit">Say Hello ;)</app-button>
+        <div class="submit-area">
+            @if(formSubmitted) {
+                <span class="success-message">Hooray! Your message is successfully on its way! I can't wait to hear from you!</span>
+            } @else {
+                <div class="fade-in-button">
+                <app-button type="submit">Say Hello ;)</app-button>
+            </div>
+            }
+        </div>
     </div>
 </form>

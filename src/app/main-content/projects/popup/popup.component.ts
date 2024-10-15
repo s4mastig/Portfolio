@@ -1,27 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
-interface Project {
-  projectId: number;
-  projectNumber: string;
-  projectName: string;
-  projectDescription: string;
-  techniques: string[];
-  techniqueSymbols: string[];
-  githubLink: string;
-  projectLink: string;
-  projectImg: string;
-}
-
 @Component({
-  selector: 'app-projects',
+  selector: 'app-popup',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  imports: [],
+  templateUrl: './popup.component.html',
+  styleUrl: './popup.component.scss'
 })
-
-export class ProjectsComponent {
+export class PopupComponent {
 
   popupOpen: boolean = false;
   activeProject: number = 0;
